@@ -24,3 +24,36 @@ WHEN all questions are answered or the timer reaches 0
 THEN the game is over
 WHEN the game is over
 THEN I can save my initials and my score
+
+## Questions
+
+1. Commonly used data types DO NOT include:
+    a.Strings
+    b.Boolean
+    c.Alert
+    d.Number
+
+2. The condition in an if/else statement is enclosed with ________.
+    a.quotes
+    b.curly brackets
+    c.parenthesis
+    d.square brackets
+
+3. A very useful tool used during development and debugging for printing content to the debugger is:
+    a.JavaScript
+    b. terminal/bash
+    c. for loops
+    d.console.log
+
+4. String values must be enclosed within _____ when being assigned to variables.
+    a.commas
+    b.curly brackets
+    c.quotes
+    d.parenthesis 
+
+5. Arrays in JavaScript can be arranged to store:
+    a. numbers and strings
+    b. other arrays
+    c. booleans
+    d. all of the above
+

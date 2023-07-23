@@ -14,20 +14,81 @@
 <body>
     <header>
         <a href="#score-bank">View High Scores</a>
-        <div id="timer">Time: 0</div>
+        <div class="time" id="timer">Time: 0
+            <span id="timeLeft"></span>
+        </div>
     </header>
 
-    <div id="cover-page">
-        <h1>Quiz Challenge</h1>
-        <p> Try to answer the following questions within the time limit.
-            <br>
-            Incorrect answers will penalize your time by 10 seconds!
-        </p>
-<!-- Start Quiz Button -->
-    <button id="start-quiz">Start Quiz!</button>
-    </div>
+    
+
+    <main> 
+        <section id="cover-page" class="quiz-section">
+            <h1>Quiz Challenge</h1>
+            <p class="card-text"> 
+                Try to answer the following questions within the time limit.
+                <br>
+                Incorrect answers will penalize your time by 10 seconds!
+            </p>
+    <!-- Start Quiz Button -->
+            <button id="start-quiz">Start Quiz!</button>
+        </section>
+
+        <section id="quiz" class="quiz-section hidden">
+        
+            <h2 id="prompt">
+                <!-- Commonly used data types DO NOT include: -->
+            </h2>
+                <ul id="choices">
+                    <li data-index="0">
+                        <button></button>
+                    </li>
+                    <li data-index="1">
+                        <button>2. boolean</button>
+                    </li>
+                    <li data-index="2">
+                        <button>3. alert</button>
+                    </li>
+                    <li data-index="3">
+                        <button>4. number</button>
+                    </li>
+            </ul>
+        </section>
+
+        <section id="end" class="quiz-section">
+            <h1 id="end-message">You Finished!</h1>
+            <p id="score-display">"You Scored: "
+                <span id="score"> </span>
+            </p>
+            <form id="submit-score">
+                <label for="initials">Enter initials:</label>
+                <input type="text" id="initials">
+                <button type="submit">Submit</button>
+                <p id="process-input"></p>
+                <p id="error-warning"></p>
+            </form>
+            <a href="index.html" class="back-button">
+                <i class="fas.fa-angle-left::before" aria-hidden="true"></i>
+               ⬅  Back to Quiz
+            </a>
+        </section>
+
+        <div>
+            <p id="correct" class="choice hidden">
+                <i class="fas fa-check-circle" aria-hidden="true"></i>
+                "Correct!"
+            </p>
+            <p id="wrong" class="choice hidden">
+                <i class="fas fa-times-circle" aria-hidden="true"></i>
+                "Wrong!"
+            </p>
+        </div>
+    </main>   
+
     <script src="script.js"></script>
 </body>
 
 
 </html>
+
+
+
