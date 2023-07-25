@@ -104,19 +104,18 @@ var myQuestions = [
    
 ];
 
-
-
+//Show  Questions
 function showQuestions (questions, quizContainer){
     console.log(questions)
     var yield = [];
     var choices;
-    //nested loop 
+    //nested loop -  using .length property to return specific number of elements in the array
     for(var i=0; i<questions.length; i++){
         choices = [];
 
     for(letter in questions[i].choices) {
         choices.push(            //I DON'T KNOW WHAT TO DO
-            `<label>` + `<input type="radio" name="question`+i+`" value="`+ letter+'">' + letter + ` : ` + questions[i].choices[letter] + `</label>`
+            `<label>` + `<input type="button" name="question`+i+`" value="`+ letter+'">' + letter + ` : ` + questions[i].choices[letter] + `</label>`
         );
         }
     }
@@ -129,18 +128,52 @@ function showQuestions (questions, quizContainer){
     quizContainer.innerHTML = yield.join('');
 }
 
-
-
-
+//Start Quiz
 
 startQuiz.addEventListener("click", 
 function(){
     showQuestions(myQuestions, quizContainer);
-              
+          
     });  
 
-//Results
+//Next Question
 
+var nextQuestion = function() {
+
+}
+
+myQuestionsIndex++;
+
+    if (myQuestionsIndex < questions.length) {
+        nextQuestion();
+    } else {
+        gaveOver();
+    }
+
+
+
+//Results
+function showResults (questions, quizContainer, resultsContainer) {
+    var answerCon = quizContainer.querySelectorAll('.choices');
+
+    var playerAnswer = '';
+    var numberCorrect = 0;
+
+    for(var i=0; i<questions.length; i++){
+        playerAnswer = (answerCon[i].querySelector('input[name=question'+i+']:checked')||{}).value;
+
+        if(playerAnswer===questions[i].correctAnswer){
+            numberCorrect++;
+
+            answerCon[i].style.color = 'lilac';
+        }
+        else{
+            answerCon[i].style.color = 'red';
+        }
+    }
+
+    resultsContainer.innerHTML = numberCorrect + ' out of ' + questions.length;
+}
 
 //generateQuiz
 generateQuiz(myQuestions, quizContainer, resultsContainer, submitButton);
