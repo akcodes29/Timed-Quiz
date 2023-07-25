@@ -5,7 +5,6 @@ var coverPage = document.getElementById("cover-page");
 var startQuiz = document.getElementById("start-quiz");
 
 //Questions
-var quiz = document.getElementById("quiz");
 // var question = document.getElementById("question");
 var choices = document.getElementById("choices");
 var timeLeft = document.getElementById("timeLeft");
@@ -13,16 +12,17 @@ var choice = document.querySelectorAll(".choice");
 var correct = document.getElementById("correct");
 var wrong = document.getElementById("wrong");
 
-var quizContainer;
+var quizContainer = document.getElementById('quiz');
+var resultsContainer = document.getElementById('results');
 var questions = document.getElementById("questions");
-
+var myQuestionsIndex = 0;
 
 //Game Over
+var submitButton = document.getElementById('submit');
 var end = document.getElementById("end");
 var endMessage = document.getElementById("end-message");
 var score = document.getElementById("score");
 var initials = document.getElementById("initials");
-var submitScore = document.getElementById("submit");
 var error = document.getElementById("error-warning");
 
 
@@ -69,46 +69,48 @@ function generateQuiz (questions, quizContainer, resultsContainer, submitButton)
     }
 }
 
-
+//Questions
 var myQuestions = [
     {
         question:"Commonly used data types DO NOT include:",
         choices:{a: 'Strings', b: 'Boolean', c: 'Alert', d: 'Number'},
-        answer: 'c'
+        answer: 'Alert'
 
     },
     {
         question:"The condition in an if/else statement is enclosed with ________.",
         choices: {a: 'quotes', b:'curly brackets', c:'parenthesis', d: 'square brackets'},
-        answer: 'b'
+        answer: 'curly brackets'
 
     },
     {
         question: "A very useful tool used during development and debugging for printing content to the debugger is:",
         choices: { a:'JavaScript', b:'terminal/bash', c: 'for loops', d:'console.log'},
-        answer: 'd'
+        answer: 'console.log'
 
     },
     {
         question: "String values must be enclosed within _____ when being assigned to variables.",
         choices: {a: 'commas', b: 'curly brackets', c:'quotes', d:'parenthesis'},
-        answer: 'c'
+        answer: 'quotes'
 
     },
     {
         question: "Arrays in JavaScript can be arranged to store:",
         choices: {a:'numbers and strings', b:'other arrays', c:'booleans', d:'all of the above'},
-        answer: 'd'
+        answer: 'all of the above'
 
-    }
+    },
+   
 ];
 
 
 
 function showQuestions (questions, quizContainer){
-    var output = [];
+    console.log(questions)
+    var yield = [];
     var choices;
-
+    //nested loop 
     for(var i=0; i<questions.length; i++){
         choices = [];
 
@@ -116,21 +118,32 @@ function showQuestions (questions, quizContainer){
         choices.push(            //I DON'T KNOW WHAT TO DO
             `<label>` + `<input type="radio" name="question`+i+`" value="`+ letter+'">' + letter + ` : ` + questions[i].choices[letter] + `</label>`
         );
+        }
     }
-}
 
-    output.push(
-        `<div class="questions">` + questions[i].question + `</div>` + `<div class="choices">` + choices.join('') + `</div>`
+    //the push() method adds the specified elements to the end of an array and returns the new length of the array.
+    yield.push(
+        `<div class="questions">` + questions[myQuestionsIndex].question + `</div>` + `<div class="choices">` + choices.join('') + `</div>`
     );
-    
-    quizContainer.innerHTML = output.join('');
+    //join() method creates and returns a new string by concat 
+    quizContainer.innerHTML = yield.join('');
 }
 
-showQuestions(questions, quizContainer);
 
 
+
+
+startQuiz.addEventListener("click", 
+function(){
+    showQuestions(myQuestions, quizContainer);
+              
+    });  
 
 //Results
+
+
+//generateQuiz
+generateQuiz(myQuestions, quizContainer, resultsContainer, submitButton);
 
 
 
