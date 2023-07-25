@@ -33,9 +33,9 @@
             <button id="start-quiz">Start Quiz!</button>
         </section>
 
-        <section id="quiz" class="quiz-section hidden">
+        <section id="quiz" class="quizContainer">
         
-            <h2 id="prompt"></h2>
+            <h2 id="questions"></h2>
                 <ul id="choices"></ul>
         </section>
 
@@ -47,7 +47,7 @@
             <form id="submit-score">
                 <label for="initials">Enter initials:</label>
                 <input type="text" id="initials">
-                <button type="submit">Submit</button>
+                <button id="submit">Submit</button>
                 <p id="process-input"></p>
                 <p id="error-warning"></p>
             </form>
@@ -57,6 +57,7 @@
             </a>
         </section>
 
+        <div id="results"></div>
         <div>
             <p id="correct" class="choice hidden">
                 <i class="fas fa-check-circle" aria-hidden="true"></i>
