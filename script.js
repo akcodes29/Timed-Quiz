@@ -73,31 +73,31 @@ function generateQuiz (questions, quizContainer, resultsContainer, submitButton)
 var myQuestions = [
     {
         question:"Commonly used data types DO NOT include:",
-        choices:{a: 'Strings', b: 'Boolean', c: 'Alert', d: 'Number'},
+        choices:['Strings', 'Boolean', 'Alert', 'Number'],
         answer: 'Alert'
 
     },
     {
         question:"The condition in an if/else statement is enclosed with ________.",
-        choices: {a: 'quotes', b:'curly brackets', c:'parenthesis', d: 'square brackets'},
+        choices:  ['quotes', 'curly brackets', 'parenthesis', 'square brackets'],
         answer: 'curly brackets'
 
     },
     {
         question: "A very useful tool used during development and debugging for printing content to the debugger is:",
-        choices: { a:'JavaScript', b:'terminal/bash', c: 'for loops', d:'console.log'},
+        choices: ['JavaScript', 'terminal/bash', 'for loops', 'console.log'],
         answer: 'console.log'
 
     },
     {
         question: "String values must be enclosed within _____ when being assigned to variables.",
-        choices: {a: 'commas', b: 'curly brackets', c:'quotes', d:'parenthesis'},
+        choices: ['commas', 'curly brackets', 'quotes', 'parenthesis'],
         answer: 'quotes'
 
     },
     {
         question: "Arrays in JavaScript can be arranged to store:",
-        choices: {a:'numbers and strings', b:'other arrays', c:'booleans', d:'all of the above'},
+        choices: ['numbers and strings', 'other arrays', 'booleans', 'all of the above'],
         answer: 'all of the above'
 
     },
@@ -105,7 +105,10 @@ var myQuestions = [
 ];
 
 //Show  Questions
-function showQuestions (questions, quizContainer){
+//function showQuestions (questions, quizContainer)
+function showQuestions() {
+    var currentQ = myQuestions[myQuestionsIndex]
+
     console.log(questions)
     var yield = [];
     var choices;
@@ -133,22 +136,23 @@ function showQuestions (questions, quizContainer){
 startQuiz.addEventListener("click", 
 function(){
     showQuestions(myQuestions, quizContainer);
-          
+       nextQuestion();   
     });  
 
 //Next Question
 
 var nextQuestion = function() {
-
-}
-
-myQuestionsIndex++;
+    myQuestionsIndex++;
 
     if (myQuestionsIndex < questions.length) {
         nextQuestion();
     } else {
-        gaveOver();
+        gameOver();
     }
+
+}
+
+
 
 
 
