@@ -29,45 +29,56 @@
                 <br>
                 Incorrect answers will penalize your time by 10 seconds!
             </p>
-    <!-- Start Quiz Button -->
+
+<!-- Start Quiz Button -->
             <button id="start-quiz">Start Quiz!</button>
         </section>
 
-        <section>
-        
+<!-- Quiz Section -->
+        <section id="quizSection">
             <div id="quiz"></div>
         
-            <h2 id="questions"></h2>
-                <ul id="choices"></ul>
+            <h2 id="question"></h2>
+                <div id="choices">
+                    <button id="a"></button><br><br>
+                    <button id="b"></button><br><br>
+                    <button id="c"></button><br><br>
+                    <button id="d"></button><br><br>
+                </div>
         </section>
-
+<!-- End Quiz -->
         <section id="end" class="quiz-section">
             <h1 id="end-message">You Finished!</h1>
-            <p id="score-display">"You Scored: "
+            <p id="score-display">You Scored: 
                 <span id="score"> </span>
             </p>
-            <form id="submit-score">
+
+<!-- Enter Initials -->
                 <label for="initials">Enter initials:</label>
                 <input type="text" id="initials">
-                <button id="submit">Submit</button>
+                <button id="showScores">Submit</button>
                 <p id="process-input"></p>
                 <p id="error-warning"></p>
-            </form>
-            <a href="index.html" class="back-button">
-                <i class="fas.fa-angle-left::before" aria-hidden="true"></i>
-               ⬅  Back to Quiz
-            </a>
         </section>
 
-        <div id="results"></div>
-        <div>
+        <div id="scores">
+            <div id="scoreboard"></div>
+            <button  id="back">
+                 Back to Quiz
+            </button>
+        </div>
+
+        
+
+        
+        <div id="results">
             <p id="correct" class="choice hidden">
                 <i class="fas fa-check-circle" aria-hidden="true"></i>
-                "Correct!"
+                Correct!
             </p>
-            <p id="wrong" class="choice hidden">
+            <p id="incorrect" class="choice hidden">
                 <i class="fas fa-times-circle" aria-hidden="true"></i>
-                "Wrong!"
+                Incorrect!
             </p>
         </div>
     </main>   

@@ -16,6 +16,7 @@ var quizContainer = document.getElementById('quiz');
 var resultsContainer = document.getElementById('results');
 var questions = document.getElementById("questions");
 var myQuestionsIndex = 0;
+var numberCorrect = 0;
 
 //Game Over
 var submitButton = document.getElementById('submit');
@@ -25,18 +26,25 @@ var score = document.getElementById("score");
 var initials = document.getElementById("initials");
 var error = document.getElementById("error-warning");
 
+//Storage
+localStorage.setItem("scores", "");
 
+//Hide coverpage
+
+function removeAttribute(coverPage) {
+
+}
 
 //timer
 var timeEl = document.querySelector(".time");
 var mainEl = document.getElementById("main");
 var timeLeft = 75;
-var timerInterval = 0;
+var timerInterval;
 
     function setTime() {
   
         // Sets interval in variable
-        var timerInterval = setInterval(function() {
+        timerInterval = setInterval(function() {
           timeLeft--;
           timeEl.textContent = timeLeft ;
       
@@ -47,27 +55,7 @@ var timerInterval = 0;
         }, 1000);
       }
     
-      setTime();
 
-
-
-//Quiz
-
-function generateQuiz (questions, quizContainer, resultsContainer, submitButton) {
-    function showQuestions(questions, quizContainer){
-
-    }
-
-    function showResults(questions, quizContainer, resultsContainer){
-
-    }
-
-    showQuestions(questions, quizContainer);
-
-    submitButton.onclick = function(){
-        showResults(questions, quizContainer,resultsContainer);
-    }
-}
 
 //Questions
 var myQuestions = [
@@ -105,196 +93,95 @@ var myQuestions = [
 ];
 
 //Show  Questions
-//function showQuestions (questions, quizContainer)
 function showQuestions() {
     var currentQ = myQuestions[myQuestionsIndex]
+    document.getElementById("question").innerHTML = currentQ.question;
+    document.getElementById("a").textContent = currentQ.choices[0];
+    document.getElementById("b").textContent = currentQ.choices[1];
+    document.getElementById("c").textContent = currentQ.choices[2];
+    document.getElementById("d").textContent = currentQ.choices[3];
 
-    console.log(questions)
-    var yield = [];
-    var choices;
-    //nested loop -  using .length property to return specific number of elements in the array
-    for(var i=0; i<questions.length; i++){
-        choices = [];
-
-    for(letter in questions[i].choices) {
-        choices.push(            //I DON'T KNOW WHAT TO DO
-            `<label>` + `<input type="button" name="question`+i+`" value="`+ letter+'">' + letter + ` : ` + questions[i].choices[letter] + `</label>`
-        );
-        }
-    }
-
-    //the push() method adds the specified elements to the end of an array and returns the new length of the array.
-    yield.push(
-        `<div class="questions">` + questions[myQuestionsIndex].question + `</div>` + `<div class="choices">` + choices.join('') + `</div>`
-    );
-    //join() method creates and returns a new string by concat 
-    quizContainer.innerHTML = yield.join('');
 }
 
-//Start Quiz
-
+//Start Quiz & hide quiz section
 startQuiz.addEventListener("click", 
 function(){
-    showQuestions(myQuestions, quizContainer);
-       nextQuestion();   
+    setTime();
+    document.getElementById("quizSection").style.display = "block";
+    document.getElementById("cover-page").style.display = "none";
+    showQuestions();
+        //  quiz_section.hide(); //hide quiz section NOT WORKING!
     });  
 
-//Next Question
+document.getElementById("a").addEventListener("click", checkAnswer);
+document.getElementById("b").addEventListener("click", checkAnswer);
+document.getElementById("c").addEventListener("click", checkAnswer);
+document.getElementById("d").addEventListener("click", checkAnswer);
+document.getElementById("showScores").addEventListener("click", showScores);
+document.getElementById("back").addEventListener("click", back);
 
+
+
+
+//Next Question
 var nextQuestion = function() {
     myQuestionsIndex++;
 
-    if (myQuestionsIndex < questions.length) {
-        nextQuestion();
+    if (myQuestionsIndex < myQuestions.length) {
+        showQuestions();
     } else {
         gameOver();
     }
 
 }
 
+function checkAnswer() {
+    var answer = this.textContent;
+    document.getElementById("results").style.display = "block";
+    document.getElementById("correct").classList.add("hidden");
+    document.getElementById("incorrect").classList.add("hidden");
+    if(answer===myQuestions[myQuestionsIndex].answer){
+        numberCorrect++;
+        document.getElementById("correct").classList.remove("hidden");
+        document.getElementById("correct").style.color = 'darkgreen';
+    }
+    else{
+        document.getElementById("incorrect").classList.remove("hidden");
+        document.getElementById("incorrect").style.color = 'red';
+        timeLeft -= 10;
+    }
+ 
+ nextQuestion();
+}
 
-
+function gameOver() {
+  clearInterval(timerInterval);
+  showResults();
+}
 
 
 //Results
-function showResults (questions, quizContainer, resultsContainer) {
-    var answerCon = quizContainer.querySelectorAll('.choices');
-
-    var playerAnswer = '';
-    var numberCorrect = 0;
-
-    for(var i=0; i<questions.length; i++){
-        playerAnswer = (answerCon[i].querySelector('input[name=question'+i+']:checked')||{}).value;
-
-        if(playerAnswer===questions[i].correctAnswer){
-            numberCorrect++;
-
-            answerCon[i].style.color = 'lilac';
-        }
-        else{
-            answerCon[i].style.color = 'red';
-        }
-    }
-
-    resultsContainer.innerHTML = numberCorrect + ' out of ' + questions.length;
+function showResults () {
+    document.getElementById("results").style.display = "none";
+    document.getElementById("quizSection").style.display = "none";
+    document.getElementById("end").style.display = "block";
+    document.getElementById("score").innerHTML = numberCorrect + ' out of ' + myQuestions.length;
 }
 
-//generateQuiz
-generateQuiz(myQuestions, quizContainer, resultsContainer, submitButton);
+function back() {
+    document.getElementById("scores").style.display = "none";
+    document.getElementById("cover-page").style.display = "block";
+}
 
+function showScores() {
+    document.getElementById("end").style.display = "none";
+    document.getElementById("scores").style.display = "block";
+    var initials = document.getElementById("initials").value;
+    var record = initials + " " + numberCorrect +"<br>";
+    var records = localStorage.getItem("scores");
+    records += record;
+    console.log(records);
+    localStorage.setItem("scores", records);
+    document.getElementById("scoreboard").innerHTML = records; 
+}
 
-
-
-
-
-
-// //DOM elements
-
-// var quiz = document.querySelector("#quiz");
-
-// // Other dom elements
-// var questionsEl = document.querySelector("#questions");
-// var choicesEl = document.querySelector("#options");
-// var timerId;
-// var currentQuestionIndex = 0;
-
-
-
-// startQuiz.addEventListener("click", function(){
-//     question1();
-    
-// });  
-
-// function question1(){
-//     var quiz = document.querySelector("#quiz"); 
-//     coverPage.innerHTML = ``;
-//     quiz.innerHTML += `
-//         <h1>Commonly used data types DO NOT include:</h1>
-//         <ol>
-//             <li> <button id="wrong">Strings</button> </li>
-//             <li> <button id="wrong">Boolean</button> </li>
-//             <li> <button id="correct">Alerts</button> </li>
-//             <li> <button id="wrong">Numbers</button> </li>
-//         </ol>
-//         <br>
-//     `
-
-//     var answer = document.querySelector("#correct");
-//     var incorrect = document.querySelector("#wrong");
-
-
-//     answer.addEventListener("click", function() {
-//         if (answer){
-//             return quiz.innerHTML += `<p>Correct!</p>`;
-//         } 
-//     });
-
-// }
-
-// // incorrect.addEventListener("click", function() {
-// //     if (incorrect) {
-// //         return quiz.innerHTML += 'Wrong';
-// //     }
-// // })
-
-// quiz.addEventListener("click", function(){
-//     question2();
-// });
-
-// function question2() {
-//         var quiz = document.querySelector("#quiz"); 
-//         quiz.innerHTML = ``;
-//         quiz.innerHTML += `
-//             <h1>The condition in an if / else statement is enclosed with ___________.</h1>
-//             <ol>
-//                 <li> <button id="wrong">quotes</button> </li>
-//                 <li> <button id="wrong">curly brackets</button> </li>
-//                 <li> <button id="correct">parenthesis</button> </li>
-//                 <li> <button id="wrong">square brackets</button> </li>
-//             </ol>
-//             <br>
-//         `
-    
-//         var answer = document.querySelector("#correct");
-//         var incorrect = document.querySelector("#wrong");
-    
-//         answer.addEventListener("click", function() {
-//             if (answer){  
-//                 quiz.innerHTML += `<p>Correct!</p>`
-//             } else if (incorrect){
-//                 quiz.innerHTML += `<p>Wrong!</p>`
-//             }
-//         });
-
-//     }
-
-//     quiz.addEventListener("click", function(){
-//         question3();
-//     });
-
-//     function question3() {
-//         var quiz = document.querySelector("#quiz"); 
-//         quiz.innerHTML = ``;
-//         quiz.innerHTML += `
-//             <h1>A very useful tool used during development and debugging for printing content to the debugger is:</h1>
-//             <ol>
-//                 <li> <button id="wrong">JavaScript</button> </li>
-//                 <li> <button id="wrong">terminal/bash</button> </li>
-//                 <li> <button id="wrong">for loops</button> </li>
-//                 <li> <button id="correct">console.log</button> </li>
-//             </ol>
-//             <br>
-//         `
-    
-//         var answer = document.querySelector("#correct");
-//         var incorrect = document.querySelector("#wrong");
-    
-//         answer.addEventListener("click", function() {
-//             if (answer){  
-//                 quiz.innerHTML += `<p>Correct!</p>`
-//             } else if (incorrect){
-//                 quiz.innerHTML += `<p>Wrong!</p>`
-//             }
-//         });
-
-//     }
