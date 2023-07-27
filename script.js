@@ -26,7 +26,10 @@ var initials = document.getElementById("initials");
 var error = document.getElementById("error-warning");
 
 //Storage
-localStorage.setItem("scores", "");
+if (!localStorage.getItem("scores")) {
+    localStorage.setItem("scores", "");
+
+}
 
 
 //timer
@@ -39,7 +42,7 @@ var timerInterval;
   // Sets interval in variable
         timerInterval = setInterval(function() {
           timeLeft--;
-          timeEl.textContent = timeLeft ;
+          timeEl.textContent = "Time: " + timeLeft ;
       
           if(timeLeft === 0) {
             clearInterval(timerInterval);
@@ -99,10 +102,16 @@ function showQuestions() {
 //Start Quiz & hide quiz section
 startQuiz.addEventListener("click", 
 function(){
+    myQuestionsIndex = 0;
+    timeLeft = 75;
+    numberCorrect = 0;
+    document.getElementById("correct").classList.add("hidden");
+    document.getElementById("incorrect").classList.add("hidden");
     setTime();
     document.getElementById("quizSection").style.display = "block";
     document.getElementById("cover-page").style.display = "none";
     showQuestions();
+
     });  
 
 document.getElementById("a").addEventListener("click", checkAnswer);
@@ -115,6 +124,8 @@ document.getElementById("showScores").addEventListener("click", showScores);
 
 // Back to Quiz button
 document.getElementById("back").addEventListener("click", back);
+document.getElementById("view").addEventListener("click", view);
+document.getElementById("clear").addEventListener("click", clear);
 
 //Next Question
 var nextQuestion = function() {
@@ -159,6 +170,7 @@ function showResults () {
     document.getElementById("quizSection").style.display = "none";
     document.getElementById("end").style.display = "block";
     document.getElementById("score").innerHTML = numberCorrect + ' out of ' + myQuestions.length;
+    document.getElementById("timer").innerHTML = "Time: 0";
 }
 
 function showScores() {
@@ -177,8 +189,25 @@ function showScores() {
 function back() {
     document.getElementById("scores").style.display = "none";
     document.getElementById("cover-page").style.display = "block";
-    myQuestionsIndex = 0;
-    timeLeft = 75;
     
+}
+
+function view() {
+    document.getElementById("end").style.display = "none";
+    document.getElementById("scores").style.display = "block";
+    document.getElementById("quizSection").style.display = "none";
+    document.getElementById("cover-page").style.display = "none";
+    var records = localStorage.getItem("scores");
+    document.getElementById("scoreboard").innerHTML = records; 
+    document.getElementById("timer").innerHTML = "Time: 0";
+    clearInterval(timerInterval);
+    document.getElementById("correct").classList.add("hidden");
+    document.getElementById("incorrect").classList.add("hidden");
+
+}
+
+function clear() {
+    document.getElementById("scoreboard").innerHTML = ""; 
+    localStorage.setItem("scores", "");
 }
 

@@ -7,19 +7,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Timed-Quiz</title>
     <link rel="stylesheet" href="style.css">
-
 </head>
 
 <!-- Score bank and timer -->
 <body>
     <header>
-        <a href="#score-bank">View High Scores</a>
+        <a href="#score-bank" id="view">View High Scores</a>
         <div class="time" id="timer">Time: 0
-            <span id="timeLeft"></span>
         </div>
     </header>
-
-    
+ 
 <!-- Front Page (cover-page) -->
     <main> 
         <section id="cover-page" class="quiz-section">
@@ -36,8 +33,6 @@
 
 <!-- Quiz Section -->
         <section id="quizSection">
-            <div id="quiz"></div>
-        
             <h2 id="question"></h2>
                 <div id="choices">
                     <button id="a"></button><br><br>
@@ -46,27 +41,24 @@
                     <button id="d"></button><br><br>
                 </div>
         </section>
+
 <!-- End Quiz -->
         <section id="end" class="quiz-section">
             <h1 id="end-message">You Finished!</h1>
             <p id="score-display">You Scored: 
                 <span id="score"> </span>
             </p>
-
 <!-- Enter Initials -->
                 <label for="initials">Enter initials:</label>
                 <input type="text" id="initials">
-                <button id="showScores">Submit</button>
-                <p id="process-input"></p>
-                <p id="error-warning"></p>
+                <button id="showScores">Submit</button>  
         </section>
 
 <!-- Restart quiz -->
         <div id="scores">
             <div id="scoreboard"></div>
-            <button  id="back">
-                 Back to Quiz
-            </button>
+            <button  id="back">Back to Quiz</button>
+            <button  id="clear">Clear Highscores</button>
         </div>
 
 <!-- Results -->
@@ -84,9 +76,4 @@
 
     <script src="script.js"></script>
 </body>
-
-
 </html>
-
-
-
