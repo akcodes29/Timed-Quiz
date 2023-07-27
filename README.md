@@ -1,6 +1,8 @@
 # Timed-Quiz
-This project is for Module 4 Homework. I am required to build a timed quiz.
 
+## Description
+
+This project is for Module 4 Homework. I am required to build a timed quiz.
 
 ## User Story
 
@@ -12,7 +14,6 @@ SO THAT I can gauge my progress compared to my peers
 
 ## Acceptance Criteria
 
-```
 GIVEN I am taking a code quiz
 WHEN I click the start button
 THEN a timer starts and I am presented with a question
@@ -28,32 +29,41 @@ THEN I can save my initials and my score
 ## Questions
 
 1. Commonly used data types DO NOT include:
-    a.Strings
-    b.Boolean
-    c.Alert
-    d.Number
+   a.Strings
+   b.Boolean
+   c.Alert
+   d.Number
 
-2. The condition in an if/else statement is enclosed with ________.
-    a.quotes
-    b.curly brackets
-    c.parenthesis
-    d.square brackets
+2. The condition in an if/else statement is enclosed with **\_\_\_\_**.
+   a.quotes
+   b.curly brackets
+   c.parenthesis
+   d.square brackets
 
 3. A very useful tool used during development and debugging for printing content to the debugger is:
-    a.JavaScript
-    b. terminal/bash
-    c. for loops
-    d.console.log
+   a.JavaScript
+   b. terminal/bash
+   c. for loops
+   d.console.log
 
-4. String values must be enclosed within _____ when being assigned to variables.
-    a.commas
-    b.curly brackets
-    c.quotes
-    d.parenthesis 
+4. String values must be enclosed within **\_** when being assigned to variables.
+   a.commas
+   b.curly brackets
+   c.quotes
+   d.parenthesis
 
 5. Arrays in JavaScript can be arranged to store:
-    a. numbers and strings
-    b. other arrays
-    c. booleans
-    d. all of the above
+   a. numbers and strings
+   b. other arrays
+   c. booleans
+   d. all of the above
 
+## License
+
+N/A
+
+## Deployed Site
+
+## Screenshot
+
+![screen shot of page](image.png)

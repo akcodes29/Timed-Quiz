@@ -5,7 +5,6 @@ var coverPage = document.getElementById("cover-page");
 var startQuiz = document.getElementById("start-quiz");
 
 //Questions
-// var question = document.getElementById("question");
 var choices = document.getElementById("choices");
 var timeLeft = document.getElementById("timeLeft");
 var choice = document.querySelectorAll(".choice");
@@ -29,11 +28,6 @@ var error = document.getElementById("error-warning");
 //Storage
 localStorage.setItem("scores", "");
 
-//Hide coverpage
-
-function removeAttribute(coverPage) {
-
-}
 
 //timer
 var timeEl = document.querySelector(".time");
@@ -43,7 +37,7 @@ var timerInterval;
 
     function setTime() {
   
-        // Sets interval in variable
+// Sets interval in variable
         timerInterval = setInterval(function() {
           timeLeft--;
           timeEl.textContent = timeLeft ;
@@ -110,18 +104,18 @@ function(){
     document.getElementById("quizSection").style.display = "block";
     document.getElementById("cover-page").style.display = "none";
     showQuestions();
-        //  quiz_section.hide(); //hide quiz section NOT WORKING!
     });  
 
 document.getElementById("a").addEventListener("click", checkAnswer);
 document.getElementById("b").addEventListener("click", checkAnswer);
 document.getElementById("c").addEventListener("click", checkAnswer);
 document.getElementById("d").addEventListener("click", checkAnswer);
+
+// Submit button
 document.getElementById("showScores").addEventListener("click", showScores);
+
+// Back to Quiz button
 document.getElementById("back").addEventListener("click", back);
-
-
-
 
 //Next Question
 var nextQuestion = function() {
@@ -132,9 +126,9 @@ var nextQuestion = function() {
     } else {
         gameOver();
     }
-
 }
 
+//Check answers & take 10 seconds away for incorrect
 function checkAnswer() {
     var answer = this.textContent;
     document.getElementById("results").style.display = "block";
@@ -154,11 +148,11 @@ function checkAnswer() {
  nextQuestion();
 }
 
+//Stops timer 
 function gameOver() {
   clearInterval(timerInterval);
   showResults();
 }
-
 
 //Results
 function showResults () {
@@ -166,11 +160,6 @@ function showResults () {
     document.getElementById("quizSection").style.display = "none";
     document.getElementById("end").style.display = "block";
     document.getElementById("score").innerHTML = numberCorrect + ' out of ' + myQuestions.length;
-}
-
-function back() {
-    document.getElementById("scores").style.display = "none";
-    document.getElementById("cover-page").style.display = "block";
 }
 
 function showScores() {
@@ -183,5 +172,11 @@ function showScores() {
     console.log(records);
     localStorage.setItem("scores", records);
     document.getElementById("scoreboard").innerHTML = records; 
+}
+
+//Restart quiz
+function back() {
+    document.getElementById("scores").style.display = "none";
+    document.getElementById("cover-page").style.display = "block";
 }
 
