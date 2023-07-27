@@ -36,8 +36,7 @@ var timeLeft = 75;
 var timerInterval;
 
     function setTime() {
-  
-// Sets interval in variable
+  // Sets interval in variable
         timerInterval = setInterval(function() {
           timeLeft--;
           timeEl.textContent = timeLeft ;
@@ -178,5 +177,8 @@ function showScores() {
 function back() {
     document.getElementById("scores").style.display = "none";
     document.getElementById("cover-page").style.display = "block";
+    myQuestionsIndex = 0;
+    timeLeft = 75;
+    
 }
 
