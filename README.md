@@ -64,6 +64,8 @@ N/A
 
 ## Deployed Site
 
+https://akcodes29.github.io/Timed-Quiz/
+
 ## Screenshot
 
 ![screen shot of page](image.png)
