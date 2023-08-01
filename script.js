@@ -9,7 +9,6 @@ var choices = document.getElementById("choices");
 var timeLeft = document.getElementById("timeLeft");
 var choice = document.querySelectorAll(".choice");
 var correct = document.getElementById("correct");
-var wrong = document.getElementById("wrong");
 
 var quizContainer = document.getElementById('quiz');
 var resultsContainer = document.getElementById('results');
@@ -45,7 +44,7 @@ var timerInterval;
           timeEl.textContent = "Time: " + timeLeft ;
       
           if(timeLeft === 0) {
-            clearInterval(timerInterval);
+            gameOver();
           }
       
         }, 1000);
@@ -113,6 +112,7 @@ function(){
     showQuestions();
 
     });  
+
 
 document.getElementById("a").addEventListener("click", checkAnswer);
 document.getElementById("b").addEventListener("click", checkAnswer);
