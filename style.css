@@ -17,6 +17,7 @@ header a {
     font-size: 65px;
     padding-bottom: 3%;
     padding-top: 4%;
+    background-color: rgb(179, 97, 179);
 }
 
 #cover-page p {
@@ -27,13 +28,29 @@ header a {
     justify-content: center;
 }
 
-#start-quiz {
-    margin: auto;
-    text-align: center;
+img {
     display: flex;
     justify-content: center;
-    font-size: 40px;
-    background-color: rgb(179, 97, 179);
+    padding-left: 38%;
+    width: 25%;
+    height: 50%;
+}
+
+#start-quiz {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    font-size: 45px;
+    border-radius: 50px;
+    width: 200px;
+    height: 100px;
+    color: black;
+    background-color: rgb(143, 81, 161);
+}
+
+#start-quiz:hover {
+    color: rgb(110, 45, 148);
+    background-color: rgb(255, 255, 255);
 }
 
 button {
@@ -41,43 +58,88 @@ button {
     font-family: Arial, Helvetica, sans-serif;
     font-style: oblique;
     color: black;
-    font-size: 30px;
+    font-size: 30px;   
+    border-radius: 15px;
+    width: 270px;
+    height: 115px;
+}
+
+#timer {
+    font-size: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-right: 2%;
     
 }
 
 button:hover {
-    color: pink;
+    color: rgb(124, 48, 134);
     background-color: black;
 }
 
+.thumbsUp {
+    display: flex;
+    justify-content: center;
+    width: 10%;
+    height: 50%;
+    padding-left: 45%;
+
+} 
+
 #question {
-    font-size: 40px;
+    font-size: 50px;
+    padding-left: 10%;
     
 }
 
+#choices {
+    font-size: 30px;
+    padding-left: 10%;
+}
+
 #end-message {
+    display: flex;
+    justify-content: center;
     font-size: 45px;
     font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(172, 116, 204);
 }
 
 #score-display {
-    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    font-size: 45px;
+    background-color: rgb(172, 116, 204);
     font-family: Arial, Helvetica, sans-serif;
 }
 
 label {
-    font-size: 25px;
+    font-size: 30px;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 input {
-    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    
+    font-size: 30px;
+}
+
+#showScores {
+    display: flex;
+    justify-content: center;
+    width: 200px;
+    height: 50px;
+    border-radius: 30px;
+    background-color: black;
+    color: lavender;
 }
 
 #scoreboard {
-    font-size: 30px;
+    font-size: 50px;
     padding-bottom: 5%;
+    padding-left: 5%;
 }
+
 
 
 #quizSection {
@@ -85,8 +147,27 @@ input {
 
 }
 
+.enterScore {
+    padding-left: 41%;
+}
+
+#back {
+    margin-left: 2%;
+    margin-right: 1%;
+    border-radius: 30%;
+    height: 100px;
+}
+
+#clear {
+    margin-left: 1%;
+    margin-right: 1%;
+    border-radius: 30%;
+    height: 98px;
+}
+
 #end {
     display: none;
+    background-color: rgb(172, 116, 204);
 }
 
 #results {

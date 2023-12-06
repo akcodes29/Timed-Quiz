@@ -55,33 +55,33 @@ var timerInterval;
 //Questions
 var myQuestions = [
     {
-        question:"Commonly used data types DO NOT include:",
-        choices:['Strings', 'Boolean', 'Alert', 'Number'],
-        answer: 'Alert'
+        question:"In which year did Taylor Swift release her debut self-titled album?",
+        choices:['2005', '2006', '2007', '2008'],
+        answer: '2006'
 
     },
     {
-        question:"The condition in an if/else statement is enclosed with ________.",
-        choices:  ['quotes', 'curly brackets', 'parenthesis', 'square brackets'],
-        answer: 'curly brackets'
+        question:"Which album features the hit single 'Shake It Off,' one of Taylor Swift's most successful and recognizable songs?",
+        choices:  ['Speak Now', 'Fearless', '1989', 'Red'],
+        answer: '1989'
 
     },
     {
-        question: "A very useful tool used during development and debugging for printing content to the debugger is:",
-        choices: ['JavaScript', 'terminal/bash', 'for loops', 'console.log'],
-        answer: 'console.log'
+        question: "How many Grammy Awards has Taylor Swift won as of 2023?",
+        choices: ['12', '13', '22', '52'],
+        answer: '12'
 
     },
     {
-        question: "String values must be enclosed within _____ when being assigned to variables.",
-        choices: ['commas', 'curly brackets', 'quotes', 'parenthesis'],
-        answer: 'quotes'
+        question: "What is the title of Taylor Swift's documentary that premiered on Netflix in 2020, providing an intimate look into her life and career?",
+        choices: ['Teardrops From My Guitar', 'The ERAS Tour', 'Miss Americana', 'Taylor Swift: The Story of Us'],
+        answer: 'Miss Americana'
 
     },
     {
-        question: "Arrays in JavaScript can be arranged to store:",
-        choices: ['numbers and strings', 'other arrays', 'booleans', 'all of the above'],
-        answer: 'all of the above'
+        question: "Who is the number 1 enemy of Taylor Swift and her fandom?",
+        choices: ['Joe Alwyn', 'Scooter Braun', 'Beyonce', 'Selena Gomez'],
+        answer: 'Scooter Braun'
 
     },
    
